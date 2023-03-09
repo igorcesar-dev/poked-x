@@ -1,1 +1,1 @@
-# poked-x
+# pokedéx
