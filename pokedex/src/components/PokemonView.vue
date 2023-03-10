@@ -1,16 +1,20 @@
 <template>
-  <div>
-    <div class="card" style="width: 20rem">
-      <img :src="currentImg" class="card-img-top" alt="img" />
-      <div class="card-body">
-        <h5 class="card-title">{{ num }} - {{ upper(name) }}</h5>
-        <p class="card-text">
-          {{ pokemon.type }}
-        </p>
-        <button @click="mudarSprite" class="btn btn-primary">
-          Mudar sprite
-        </button>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      <div class="card" style="width: 20rem">
+        <img :src="currentImg" class="card-img-top" alt="img" />
+        <div class="card-body">
+          <h5 class="card-title">{{ num }} - {{ upper(name) }}</h5>
+          <p class="card-text">
+            Tipo: {{ pokemon.type }}
+          </p>
+          <button @click="mudarSprite" class="btn btn-primary">
+            Mudar sprite
+          </button>
+        </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -22,9 +26,10 @@ export default {
   created: function () {
     axios.get(this.url).then((res) => {
       this.pokemon.type = res.data.types[0].type.name;
-      this.pokemon.front = res.data.sprites.front_default;
+      this.pokemon.front = res.data.sprites.front_default; 
       this.pokemon.back = res.data.sprites.back_default;
       this.currentImg = this.pokemon.front;
+      console.log(res)
     });
   },
   data() {
