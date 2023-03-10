@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <img class="mb-5" src="./assets/pokemonlogo.png" alt="logo" />
+
     <div v-for="(poke, index) in pokemons" :key="index">
-      <Pokemon :name="poke.name" :url="poke.url" :num="index + 1"/>
+      <Pokemon :name="poke.name" :url="poke.url" :num="index + 1" />
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@ export default {
       });
   },
   components: {
-    Pokemon
+    Pokemon,
   },
 };
 </script>
