@@ -15,9 +15,8 @@
     >
       Buscar
     </button>
-    <button>
-      Exibir todos os Pokémons
-    </button>
+    <br />
+    <button @click="mostrarTodos">Exibir todos os Pokémos</button>
     <div class="container">
       <div class="row">
         <div
@@ -62,6 +61,7 @@ export default {
       if (this.busca == "" || this.busca == " ") {
         this.filteredPokemons = this.pokemons;
       } else {
+        this.filteredPokemons = this.pokemons;
         this.filteredPokemons = this.pokemons.filter(
           (pokemon) => pokemon.name == this.busca
         );
@@ -91,5 +91,7 @@ export default {
   background: linear-gradient(to bottom, #6ab7f5, #fff);
 }
 
-
+.modal-content{
+  background-color: unset;
+}
 </style>
