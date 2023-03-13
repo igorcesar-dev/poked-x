@@ -43,4 +43,4 @@ npm run serve
 ```
 
 ## Result 🌐
-<img src="/src/assets/poke.gif" />
+<img src="src/assets/poke.gif" />
