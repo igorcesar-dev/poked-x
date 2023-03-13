@@ -1,26 +1,23 @@
 <template>
   <div id="app">
-    <img class="mb-5" src="./assets/pokemonlogo.png" alt="logo" />
+    <img class="mb-4" src="./assets/pokemonlogo.png" alt="logo" />
     <br />
     <input
-      class="mb-3 rounded w-50"
+      class="mb-3 rounded-3 w-50 text-center" style="border:solid 0.1px"
       type="text"
       placeholder="Buscar pokémon pelo nome"
       v-model="busca"
     /><br />
-    <button
+    <button class="button-app mb-4"
       @click="buscar"
-      class="mb-5 rounded w-50 btn-primary btn"
       id="buscaBtn"
     >
       Buscar
     </button>
-    <br />
-    <button @click="mostrarTodos">Exibir todos os Pokémos</button>
     <div class="container">
       <div class="row">
         <div
-          class="col-sm"
+          class="col-sm mb-3 text-center"
           v-for="(poke, index) in filteredPokemons"
           :key="poke.url"
         >
@@ -49,7 +46,7 @@ export default {
       .then((res) => {
         console.log("pegou a lista de pokemons");
         this.pokemons = res.data.results;
-        this.filteredPokemons = res.data.results;
+        this.filteredPokemons = this.pokemons;
       });
   },
   components: {
@@ -57,17 +54,16 @@ export default {
   },
   methods: {
     buscar: function () {
-      this.filteredPokemons = this.pokemons;
       if (this.busca == "" || this.busca == " ") {
         this.filteredPokemons = this.pokemons;
       } else {
-        this.filteredPokemons = this.pokemons;
         this.filteredPokemons = this.pokemons.filter(
           (pokemon) => pokemon.name == this.busca
         );
       }
     },
   },
+
   computed: {
     resultadoBusca: function () {
       if (this.busca == "" || this.busca == " ") {
@@ -91,7 +87,18 @@ export default {
   background: linear-gradient(to bottom, #6ab7f5, #fff);
 }
 
-.modal-content{
-  background-color: unset;
+.button-app {
+  width: 30%;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: clamp(8px, 5vw, 1rem);
+  font-weight: 600;
+  color: white;
+  background-color: #444;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+}
+.button-app:active {
+  box-shadow: inset -4px 4px 0 #222;
+  font-size: 0.9rem;
 }
 </style>
